@@ -94,7 +94,7 @@ Step 2: Copy public key content by running the following command need to add in 
 `cat  /home/ec2-user/.ssh/id_ed25519.pub`
 
 ## Confguring SSH to EC2 instance for acessing it. 
-Step 1: Add the ssh key to EC2 instances. You should able to see key name airflow-with-aws-eks-github-ssh in key pairs list in EC2 service page under Network & Security section.e<br />
+Step 1: Add the ssh key to EC2 instances. You should able to see key name airflow-with-aws-eks-github-ssh in key pairs list in EC2 service page under Network & Security section.<br />
 `aws ec2 import-key-pair --key-name "airflow-with-aws-eks-github-ssh" --public-key-material fileb:///home/ec2-user/.ssh/id_ed25519.pub`
 
 # Configuring ssh key and AWS IAM authenticator
