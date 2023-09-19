@@ -87,10 +87,10 @@ Step 7: Run the following commands one by one to update the file bash_profile an
 `aws configure get default.region`
 
 # Generate new ssh key for authenticating to Git code from terminal
-Step 1: Run the following command and press enter for all questions to skip and keep default values. <br />
+Step 1: Run the following command and press enter for all questions to skip and keep default values.<br />
 `ssh-keygen -t ed25519`
 
-Step 2: Copy public key content by running the following command need to add in ssh key under your GitHub account.
+Step 2: Copy public key content by running the following command need to add in ssh key under your GitHub account.<br/>
 `cat  /home/ec2-user/.ssh/id_ed25519.pub`
 
 # Configuring ssh key and AWS IAM authenticator
