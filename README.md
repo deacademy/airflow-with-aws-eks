@@ -97,7 +97,7 @@ Step 1: Go inside folder called airflow-with-aws-eks <br />
 `cd airflow-with-aws-eks`
 
 Step 2: Install the ssh key <br />
-`aws ec2 import-key-pair --key-name "airflow-with-eks" --public-key-material fileb:///home/ec2-user/.ssh/id_rsa.pub`
+`aws ec2 import-key-pair --key-name "airflow-with-aws-eks" --public-key-material fileb:///home/ec2-user/.ssh/id_ed25519.pub`
 
 Step 3: Installing aws-iam-authenticator otherwise kubectl connection will fial due to token. Run one by one commands.<br />
 `curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64` <br/>
@@ -113,10 +113,11 @@ Step 5: Install AWS V2. Run commands one by one <br />
 `unzip awscliv2.zip` <br/>
 `sudo ./aws/install --update`
 
-Step 6: Create aws eks cluster throuhg infrasturucture as a code yaml file <br/>
+# Create AWS EKS Clsuter through yaml configuration file
+Step 1: Create aws eks cluster throuhg infrasturucture as a code yaml file <br/>
 `eksctl create cluster -f cluster.yml`
 
-Step 7: Check if the cluster is healthy <br/>
+Step 2: Check if the cluster is healthy <br/>
 `kubectl get nodes`<br/>
 `kubectl get pods --all-namespaces`
 
