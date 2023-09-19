@@ -93,32 +93,33 @@ Step 1: Run the following command and press enter for all questions to skip and 
 Step 2: Copy public key content by running the following command need to add in ssh key under your GitHub account.<br/>
 `cat  /home/ec2-user/.ssh/id_ed25519.pub`
 
+## Confguring ssh to EC2 for acessing it.
+Step 1: Add the ssh key to EC2 instances <br />
+`aws ec2 import-key-pair --key-name "airflow-with-aws-eks-github-ssh" --public-key-material fileb:///home/ec2-user/.ssh/id_ed25519.pub`
+
 # Configuring ssh key and AWS IAM authenticator
-Step 1: Go inside folder called airflow-with-aws-eks <br />
-`cd airflow-with-aws-eks`
-
-Step 2: Install the ssh key <br />
-`aws ec2 import-key-pair --key-name "airflow-with-aws-eks" --public-key-material fileb:///home/ec2-user/.ssh/id_ed25519.pub`
-
-Step 3: Installing aws-iam-authenticator otherwise kubectl connection will fial due to token. Run one by one commands.<br />
+Step 1: Installing aws-iam-authenticator otherwise kubectl connection will fial due to token. Run one by one commands.<br />
 `curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64` <br/>
 `chmod +x ./aws-iam-authenticator` <br/>
 `mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin` <br/>
 `echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc` <br/>
 
-Step 4: For validate the installation <br />
+Step 2: For validate the installation <br />
 `aws-iam-authenticator help`
 
-Step 5: Install AWS V2. Run commands one by one <br />
+Step 3: Install AWS V2. Run commands one by one <br />
 `curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"`<br/>
 `unzip awscliv2.zip` <br/>
 `sudo ./aws/install --update`
 
 # Create AWS EKS Clsuter through yaml configuration file
-Step 1: Create aws eks cluster throuhg infrasturucture as a code yaml file <br/>
+Step 1: Go inside folder called airflow-with-aws-eks <br />
+`cd airflow-with-aws-eks`
+
+Step 2: Create aws eks cluster throuhg infrasturucture as a code yaml file <br/>
 `eksctl create cluster -f cluster.yml`
 
-Step 2: Check if the cluster is healthy <br/>
+Step 3: Check if the cluster is healthy <br/>
 `kubectl get nodes`<br/>
 `kubectl get pods --all-namespaces`
 
