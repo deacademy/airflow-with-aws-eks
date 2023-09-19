@@ -97,23 +97,23 @@ Step 2: Install the ssh key <br />
 `aws ec2 import-key-pair --key-name "airflow-with-eks" --public-key-material fileb:///home/ec2-user/.ssh/id_rsa.pub`
 
 Step 3: Installing aws-iam-authenticator otherwise kubectl connection will fial due to token. Run one by one commands.<br />
-`curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64`
-`chmod +x ./aws-iam-authenticator`
-`mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin`
-`echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc`
-For validate the installation <br />
+`curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64` <br/>
+`chmod +x ./aws-iam-authenticator` <br/>
+`mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin` <br/>
+`echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc` <br/>
+Step 4: For validate the installation <br />
 `aws-iam-authenticator help`
 
-Step 4: Install AWS V2. Run commands one by one <br />
-`curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"`
-`unzip awscliv2.zip`
+Step 5: Install AWS V2. Run commands one by one <br />
+`curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"`<br/>
+`unzip awscliv2.zip` <br/>
 `sudo ./aws/install --update`
 
-Step 5: Create aws eks cluster throuhg infrasturucture as a code yaml file
+Step 6: Create aws eks cluster throuhg infrasturucture as a code yaml file
 `eksctl create cluster -f cluster.yml`
 
-Step 6: Check if the cluster is healthy
-`kubectl get nodes`
+Step 7: Check if the cluster is healthy
+`kubectl get nodes` <br/>
 `kubectl get pods --all-namespaces`
 
 
