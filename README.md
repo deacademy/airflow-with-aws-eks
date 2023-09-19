@@ -17,52 +17,50 @@ Step 3: Active your python virtual environment<br/>
 
 ## Now you need to execute each command at step by step process under your active python virtual environment
 
-# Installing following packages 
-1. Upgrading latest version of pip package
-2. eksctl
-3. Kubectl
-4. Helm3
-5. git stable repo
-6. git username configuration
-   
+# Upgrading latest version of pip package (Stay upto data with latest python packages)
 Step 1: Upgrade pip for installing python external package<br/>
 `pip3 install --upgrade pip`
 
-Step 2: Download and extract the latest release of eksctl tool<br/>
+# eksctl (For creating kubernetes cluster through terminal)
+
+Step 1: Download and extract the latest release of eksctl tool<br/>
 `curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp`
 
-Step 3: Move the extarcted eksctl package to linux installation folder <br/>
+Step 2: Move the extarcted eksctl package to linux installation folder <br/>
 `sudo mv /tmp/eksctl /usr/local/bin`
 
-Step 4: Test if eksctl installed sucessfully now. It should display latest version for you <br/>
+Step 3: Test if eksctl installed sucessfully now. It should display latest version for you <br/>
 `eksctl version`
 
-Step5: Download the latest version of Kubectl package <br/>
+# Kubectl(For interacting with kubernetes cluster through terminal)
+Step 1: Download the latest version of Kubectl package <br/>
 `curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.8/bin/linux/amd64/kubectl`
 
-Step 6: provide executable permission to Kubectl package <br/>
+Step 2: provide executable permission to Kubectl package <br/>
 `chmod +x ./kubectl`
 
-Step7: Move the extarcted kubectl package to linux installation folder <br/>
+Step 3: Move the extarcted kubectl package to linux installation folder <br/>
 `sudo mv ./kubectl /usr/local/bin/kubectl`
 
-Step 8: Test if kubectl installed sucessfully now. It should display latest version for you <br/>
+Step 4: Test if kubectl installed sucessfully now. It should display latest version for you <br/>
 `kubectl version --client`
 
-Step 9: Download and install Helm3 package <br />
+# Helm3(Helps to install/mamange applications on Kubernetes cluster)
+Step 1: Download and install Helm3 package <br />
 `curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash`
 
-Step 10: Test if Helm3 installed sucessfully now. It should display latest version for you <br/>
+Step 2: Test if Helm3 installed sucessfully now. It should display latest version for you <br/>
 `helm version --short`
 
-Step 11: Download the git stable repo to interact latest changes with EkS cluster container <br/>
+# Add Git stable repo(Repo where pre-configured your applications run on your kubernetes cluster)
+Step 1: Download the git stable repo to interact latest changes with EkS cluster container <br/>
 `helm repo add stable https://charts.helm.sh/stable`
 
-Step 12: Changing git config name only but keeping the email as it is. <br/>
+# Confiure git username 
+Step 1: Changing git config name only but keeping the email as it is. <br/>
 `git config --global user.name "airflow-with-aws-eks"`
 
 # Now setting up aws configure under python virtual environment  
-
 Step 1: Upgrade aws cli package installation <br/>
 `pip install --upgrade awscli && hash -r`
 
