@@ -125,7 +125,8 @@ Step 3: Check if the cluster is healthy <br/>
 
 
 # Add GitHUB pernsonal access token to GitHUB repository. Token should be different in your GitHUB account.
-Step 1: `export GITHUB_TOKEN=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`<br/>
+Step 1: Terminal command to add GITHUB_TOKEN environment variable in cloud9 environment<br/>
+`export GITHUB_TOKEN=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`<br/>
 
 # Next run other terminal commands
 curl -s https://fluxcd.io/install.sh | sudo bash
