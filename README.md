@@ -93,6 +93,10 @@ Step 1: Run the following command and press enter for all questions to skip and 
 Step 2: Copy public key content by running the following command need to add in ssh key under your GitHub account.<br/>
 `cat  /home/ec2-user/.ssh/id_ed25519.pub`
 
+# Add GitHUB pernsonal access token to GitHUB repository. Token should be different in your GitHUB account.
+Step 1: Terminal command to add GITHUB_TOKEN environment variable in cloud9 environment<br/>
+`export GITHUB_TOKEN=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`<br/>
+
 ## Confguring SSH to EC2 instance for acessing it. 
 Step 1: Add the ssh key to EC2 instances. You should able to see key name airflow-with-aws-eks-github-ssh in key pairs list in EC2 service page under Network & Security section.<br />
 `aws ec2 import-key-pair --key-name "airflow-with-aws-eks-github-ssh" --public-key-material fileb:///home/ec2-user/.ssh/id_ed25519.pub`
@@ -119,24 +123,24 @@ Step 1: Go inside folder called airflow-with-aws-eks <br />
 Step 2: Create aws eks cluster throuhg infrasturucture as a code yaml file <br/>
 `eksctl create cluster -f cluster.yml`
 
-Step 3: Check if the cluster is healthy <br/>
+Step 3: Check if the cluster is healthy<br/>
+ You should see three while run the below command<br/>
 `kubectl get nodes`<br/>
+ Check the cluster health<br/>
 `kubectl get pods --all-namespaces`
 
-
-# Add GitHUB pernsonal access token to GitHUB repository. Token should be different in your GitHUB account.
-Step 1: Terminal command to add GITHUB_TOKEN environment variable in cloud9 environment<br/>
-`export GITHUB_TOKEN=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`<br/>
-
 # Next run other terminal commands
-curl -s https://fluxcd.io/install.sh | sudo bash
+Step 1: Install Flux library <br/>
+`curl -s https://fluxcd.io/install.sh | sudo bash`<br/>
 
-flux bootstrap github \
-  --owner=marclamberti \
-  --repository=airflow-eks-config \
+Step 2: Detect changes between Git repo and EKS code container<br/>
+`flux bootstrap github \
+  --owner=deacademy \
+  --repository=airflow-with-aws-eks \
   --branch=main \
   --interval=15s \
-  --personal
+  --personal`
+
 
 mkdir airflow-eks-config/{workloads,releases,namespaces}
 find airflow-eks-config/ -type d -exec touch {}/.keep \;
