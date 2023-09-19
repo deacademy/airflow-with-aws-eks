@@ -2,7 +2,7 @@
 This project we are going to deploy airflow dag code to aws cloud through CI/CD pipeline
 
 # Clone this repository to cloud9 environment throough terminal
-`git clone https://github.com/deacademy/airflow-with-aws-eks.git`<br />
+`git clone https://github.com/deacademy/airflow-with-aws-eks.git`
 
 ## Need to run following command to AWS Cloud9 terminal IDE step by step process
 
