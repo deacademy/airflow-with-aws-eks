@@ -15,7 +15,7 @@ managedNodeGroups:
     volumeSize: 20
     ssh:
       allow: true
-      publicKeyName: airflow-workstation
+      publicKeyName: airflow-with-aws-eks-github-ssh
     labels: { role: worker }
     tags:
       nodegroup-role: worker
