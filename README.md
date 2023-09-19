@@ -59,7 +59,7 @@ Step 11: Download the git stable repo to interact latest changes with EkS cluste
 `helm repo add stable https://charts.helm.sh/stable`
 
 Step 12: Changing git config name only but keeping the email as it is. <br/>
-`git config --global user.name "airflow-with-eks"`
+`git config --global user.name "airflow-with-aws-eks"`
 
 # Now setting up aws configure under python virtual environment  
 
