@@ -177,9 +177,8 @@ Step 3:  Install the aws-ebs-csi-driver Helm repository.<br />
 Step 4: Once the driver has been deployed, verify the pods are running.<br />
 `kubectl get pods -n kube-system -l app.kubernetes.io/name=aws-ebs-csi-driver`<br />
 
-
-
-
+# Setting up Helm repository for accessing airflow Helm chart
+Step 1:
 
 
 
