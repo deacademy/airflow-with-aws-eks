@@ -97,7 +97,7 @@ Step 2: Copy public key content by running the following command need to add in 
 Step 1: Add the ssh key to EC2 instances. You should able to see key name airflow-with-aws-eks-github-ssh in key pairs list in EC2 service page under Network & Security section.<br />
 `aws ec2 import-key-pair --key-name "airflow-with-aws-eks-github-ssh" --public-key-material fileb:///home/ec2-user/.ssh/id_ed25519.pub`
 
-# Configuring ssh key and AWS IAM authenticator
+# Configuring AWS IAM authenticator 
 Step 1: Installing aws-iam-authenticator otherwise kubectl connection will fial due to token. Run one by one commands.<br />
 `curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64` <br/>
 `chmod +x ./aws-iam-authenticator` <br/>
