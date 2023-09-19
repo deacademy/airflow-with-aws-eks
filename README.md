@@ -162,6 +162,21 @@ You can see those pods those correspnding to system applications <br/>
 Check logs for source-controller<br/>
 `kubectl logs -f source-controller-* -n flux-system`<br/>
 
+# Install AWS Elastic Block store(EBS) CSI Driver
+Step 1: Add the aws-ebs-csi-driver Helm repository.<br />
+`helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver`<br />
+
+Step 2: Update the aws-ebs-csi-driver Helm repository.<br />
+`helm repo update`<br />
+
+Step 3:  Install the aws-ebs-csi-driver Helm repository.<br />
+`helm upgrade --install aws-ebs-csi-driver \
+    --namespace kube-system \
+    aws-ebs-csi-driver/aws-ebs-csi-driver`<br />
+
+Step 4: Once the driver has been deployed, verify the pods are running.<br />
+`kubectl get pods -n kube-system -l app.kubernetes.io/name=aws-ebs-csi-driver`<br />
+
 
 
 
