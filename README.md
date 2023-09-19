@@ -13,7 +13,7 @@ Step 2: Create python virtual environment name with `airflow_with_aws_eks_venv` 
 `python3 -m venv airflow_with_aws_eks_venv`
 
 Step 3: Active your python virtual environment<br/>
-`source ./airflow_with_eks/bin/activate`
+`source ./airflow_with_aws_eks_venv/bin/activate`
 
 ## Now you need to execute each command at step by step process under your active python virtual environment
 
