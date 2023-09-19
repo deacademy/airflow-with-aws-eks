@@ -141,11 +141,18 @@ Step 2: Detect changes between Git repo and EKS code container<br/>
   --interval=15s \
   --personal`
 
+# Structure bit structure your git project folder(Make sure you are in  airflow-with-aws-eks folder)
+Step 1: Create three different folders called workloads,releases,namespaces in your root folder<br/>
+`mkdir airflow-with-aws-eks/{workloads,releases,namespaces}`<br/>
 
-mkdir airflow-eks-config/{workloads,releases,namespaces}
-find airflow-eks-config/ -type d -exec touch {}/.keep \;
-cd airflow-eks-config
-git add .
+Step 2: Create .find file all your folder <br/>
+`find airflow-with-aws-eks/ -type d -exec touch {}/.keep \;`<br/>
+
+Step 3: Transfer your code changes to git remote repository.<br/>
+`git add .`<br/>
+`git commit -am "add basic structure"`<br/>
+`git push`<br/>
+
 
 
 
