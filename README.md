@@ -64,7 +64,7 @@ Step 12: Changing git config name only but keeping the email as it is. <br/>
 # Now setting up aws configure under python virtual environment  
 
 Step 1: Upgrade aws cli package installation <br/>
-`upgrade aws cli`
+`pip install --upgrade awscli && hash -r`
 
 Step 2: Install some dependancy utilities packages <br/>
 `sudo yum -y install jq gettext bash-completion moreutils`
