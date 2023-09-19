@@ -153,6 +153,17 @@ Step 3: Transfer your code changes to git remote repository.<br/>
 `git commit -am "add basic structure"`<br/>
 `git push`<br/>
 
+Command to get namespaces under eks cluster <br/>
+`kubectl get namespaces`<br/>
+
+You can see those pods those correspnding to system applications <br/>
+`kubectl get pods -n flux-system`
+
+Check logs for source-controller<br/>
+`kubectl logs -f source-controller-* -n flux-system`<br/>
+
+
+
 
 
 
