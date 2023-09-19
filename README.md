@@ -76,7 +76,7 @@ Step 5: Run the following command to display the account id for  your iam user. 
 `aws sts get-caller-identity`
 
 Step 6: Run following command to set environment variable. <br />
-`export ACCOUNT_ID=<Take value from previous command> <br/>
+`export ACCOUNT_ID=<Take value from previous command>`<br/>
 `export AWS_REGION=<Your IAM user Availability>`
 
 Step 7: Run the following commands one by one to update the file bash_profile and configure aws <br />
