@@ -6,14 +6,14 @@ This project we are going to deploy airflow dag code to aws cloud through CI/CD 
 
 ## Need to run following command to AWS Cloud9 terminal IDE step by step process
 
-Step 1: Update all existing built-in packages <br/>
+Step 1: Update all existing built-in packages<br/>
 `sudo yum -y update`
 
-Step 2: Create python virtual environment called `airflow_with_eks` with python version 3.11 <br/>
-`python3.11 -m venv airflow_with_eks`
+Step 2: Create python virtual environment called `airflow_with_eks` with python version 3.7<br/>
+`python3 -m venv airflow_with_eks`
 
-Step 3: Active your python virtual environment
-`source .airflow_with_eks/bin/activate`
+Step 3: Active your python virtual environment<br/>
+`source ./airflow_with_eks/bin/activate`
 
 ## Now you need to execute each command at step by step process under your active python virtual environment
 
