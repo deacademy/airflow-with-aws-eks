@@ -10,7 +10,7 @@ Step 1: Update all existing built-in packages<br/>
 `sudo yum -y update`
 
 Step 2: Create python virtual environment called `airflow_with_eks` with python version 3.7<br/>
-`python3 -m venv airflow_with_eks`
+`python3 -m venv airflow_with_aws_eks_venv`
 
 Step 3: Active your python virtual environment<br/>
 `source ./airflow_with_eks/bin/activate`
