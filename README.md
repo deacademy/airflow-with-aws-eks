@@ -9,7 +9,7 @@ This project we are going to deploy airflow dag code to aws cloud through CI/CD 
 Step 1: Update all existing built-in packages<br/>
 `sudo yum -y update`
 
-Step 2: Create python virtual environment called `airflow_with_eks` with python version 3.7<br/>
+Step 2: Create python virtual environment name with `airflow_with_aws_eks_venv` with python version 3.7<br/>
 `python3 -m venv airflow_with_aws_eks_venv`
 
 Step 3: Active your python virtual environment<br/>
