@@ -49,7 +49,7 @@ Step7: Move the extarcted kubectl package to linux installation folder <br/>
 Step 8: Test if kubectl installed sucessfully now. It should display latest version for you <br/>
 `kubectl version --client`
 
-Step 9: Download and install Helm3 package
+Step 9: Download and install Helm3 package <br />
 `curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash`
 
 Step 10: Test if Helm3 installed sucessfully now. It should display latest version for you <br/>
