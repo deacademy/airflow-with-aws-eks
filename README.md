@@ -1,9 +1,6 @@
 # airflow-with-aws-eks
 This project we are going to deploy airflow dag code to aws cloud through CI/CD pipeline
 
-# Clone this repository to cloud9 environment throough terminal
-`git clone https://github.com/deacademy/airflow-with-aws-eks.git`
-
 ## Need to run following command to AWS Cloud9 terminal IDE step by step process
 
 Step 1: Update all existing built-in packages<br/>
@@ -16,6 +13,24 @@ Step 3: Active your python virtual environment<br/>
 `source ./airflow_with_aws_eks_venv/bin/activate`
 
 ## Now you need to execute each command at step by step process under your active python virtual environment
+
+# Generate new ssh key for authenticating to Git code from terminal
+Step 1: Run the following command and press enter for all questions to skip and keep default values.<br />
+`ssh-keygen -t ed25519`
+
+Step 2: Copy public key content by running the following command need to add in ssh key under your GitHub account.<br/>
+`cat  /home/ec2-user/.ssh/id_ed25519.pub`
+
+# Confguring SSH to EC2 instance for acessing it. 
+Step 1: Add the ssh key to EC2 instances. You should able to see key name airflow-with-aws-eks-github-ssh in key pairs list in EC2 service page under Network & Security section.<br />
+`aws ec2 import-key-pair --key-name "airflow-with-aws-eks-github-ssh" --public-key-material fileb:///home/ec2-user/.ssh/id_ed25519.pub`
+
+# Add GitHUB pernsonal access token to GitHUB repository. Token should be different in your GitHUB account.
+Step 1: Terminal command to add GITHUB_TOKEN environment variable in cloud9 environment<br/>
+`export GITHUB_TOKEN=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`<br/>
+
+# Clone this repository to cloud9 environment throough terminal
+`git clone git@github.com:deacademy/airflow-with-aws-eks.git`
 
 # Upgrading latest version of pip package (Stay upto data with latest python packages)
 Step 1: Upgrade pip for installing python external package<br/>
@@ -85,21 +100,6 @@ Step 7: Run the following commands one by one to update the file bash_profile an
 `echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile` <br/>
 `aws configure set default.region ${AWS_REGION}` <br/>
 `aws configure get default.region`
-
-# Generate new ssh key for authenticating to Git code from terminal
-Step 1: Run the following command and press enter for all questions to skip and keep default values.<br />
-`ssh-keygen -t ed25519`
-
-Step 2: Copy public key content by running the following command need to add in ssh key under your GitHub account.<br/>
-`cat  /home/ec2-user/.ssh/id_ed25519.pub`
-
-# Add GitHUB pernsonal access token to GitHUB repository. Token should be different in your GitHUB account.
-Step 1: Terminal command to add GITHUB_TOKEN environment variable in cloud9 environment<br/>
-`export GITHUB_TOKEN=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`<br/>
-
-## Confguring SSH to EC2 instance for acessing it. 
-Step 1: Add the ssh key to EC2 instances. You should able to see key name airflow-with-aws-eks-github-ssh in key pairs list in EC2 service page under Network & Security section.<br />
-`aws ec2 import-key-pair --key-name "airflow-with-aws-eks-github-ssh" --public-key-material fileb:///home/ec2-user/.ssh/id_ed25519.pub`
 
 # Configuring AWS IAM authenticator 
 Step 1: Installing aws-iam-authenticator otherwise kubectl connection will fial due to token. Run one by one commands.<br />
