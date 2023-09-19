@@ -60,13 +60,13 @@ Step 12: Changing git config name only but keeping the email as it is. <br/>
 
 # Now setting up aws configure under python virtual environment  
 
-Step 1: Upgrade aws cli package installation
+Step 1: Upgrade aws cli package installation <br/>
 `upgrade aws cli`
 
-Step 2: Install some dependancy utilities packages
+Step 2: Install some dependancy utilities packages <br/>
 `sudo yum -y install jq gettext bash-completion moreutils`
 
-Step 3: Remove temporary credentials
+Step 3: Remove temporary credentials <br/>
 `rm -vf ${HOME}/.aws/credentials`
 
 Step 4:  Configure aws credentials, you copy/paste your aws access key and secret access key that stored earlier and provide region depends on your iam user created zone that can get right before profile icon at right hand top corner. My case region is 'us-east-1' and other option just click enter to skip. <br />
