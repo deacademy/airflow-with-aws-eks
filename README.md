@@ -13,7 +13,8 @@ Step 3: Active your python virtual environment
 `source .airflow_with_eks/bin/activate`
 
 ## Now you need to execute each command at step by step process under your active python virtual environment
-# Installing following packages- <br/>
+
+# Installing following packages 
 1. Upgrading latest version of pip package
 2. eksctl
 3. Kubectl
@@ -55,10 +56,81 @@ Step 11: Download the git stable repo to interact latest changes with EkS cluste
 `helm repo add stable https://charts.helm.sh/stable`
 
 Step 12: Changing git config name only but keeping the email as it is. <br/>
-`git config --global user.name "airflow-ws-with-eks"`
+`git config --global user.name "airflow-with-eks"`
+
+# Now setting up aws configure under python virtual environment  
+
+Step 1: Upgrade aws cli package installation
+`upgrade aws cli`
+
+Step 2: Install some dependancy utilities packages
+`sudo yum -y install jq gettext bash-completion moreutils`
+
+Step 3: Remove temporary credentials
+`rm -vf ${HOME}/.aws/credentials`
+
+Step 4:  Configure aws credentials, you copy/paste your aws access key and secret access key that stored earlier and provide region depends on your iam user created zone that can get right before profile icon at right hand top corner. My case region is 'us-east-1' and other option just click enter to skip. <br />
+`aws configure`
+
+Step 5: Run the following command to display the account id for  your iam user. <br />
+`aws sts get-caller-identity`
+
+Step 6: Run following command to set environment variable. <br />
+`export ACCOUNT_ID=<Take value from previous command>
+`export AWS_REGION=<Your IAM user Availability>`
+
+Step 7: Run the following commands one by one to update the file bash_profile and configure aws <br />
+`echo "export ACCOUNT_ID=${ACCOUNT_ID}" | tee -a ~/.bash_profile`
+`echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile`
+`aws configure set default.region ${AWS_REGION}`
+`aws configure get default.region`
+
+# Generate new ssh key for authenticating to Git code from terminal
+Step 1: Run the following command and press enter for all questions to skip and keep default values. <br />
+`ssh-keygen -t ed25519`
+
+# Configuring ssh key and AWS IAM authenticator
+Step 1: Go inside folder called airflow-with-aws-eks <br />
+`cd airflow-with-aws-eks`
+
+Step 2: Install the ssh key <br />
+`aws ec2 import-key-pair --key-name "airflow-with-eks" --public-key-material fileb:///home/ec2-user/.ssh/id_rsa.pub`
+
+Step 3: Installing aws-iam-authenticator otherwise kubectl connection will fial due to token. Run one by one commands.<br />
+`curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64`
+`chmod +x ./aws-iam-authenticator`
+`mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin`
+`echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc`
+For validate the installation <br />
+`aws-iam-authenticator help`
+
+Step 4: Install AWS V2. Run commands one by one <br />
+`curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"`
+`unzip awscliv2.zip`
+`sudo ./aws/install --update`
+
+Step 5: Create aws eks cluster throuhg infrasturucture as a code yaml file
+`eksctl create cluster -f cluster.yml`
+
+Step 6: Check if the cluster is healthy
+`kubectl get nodes`
+`kubectl get pods --all-namespaces`
 
 
+# Next run other terminal commands
+curl -s https://fluxcd.io/install.sh | sudo bash
 
+flux bootstrap github \
+  --owner=marclamberti \
+  --repository=airflow-eks-config \
+  --branch=main \
+  --interval=15s \
+  --personal
+
+mkdir airflow-eks-config/{workloads,releases,namespaces}
+find airflow-eks-config/ -type d -exec touch {}/.keep \;
+cd airflow-eks-config
+git add .
 
 
 
