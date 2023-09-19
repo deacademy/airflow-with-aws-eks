@@ -109,7 +109,7 @@ Step 2: For validate the installation <br />
 
 Step 3: Install AWS V2. Run commands one by one <br />
 `curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"`<br/>
-`unzip awscliv2.zip` <br/>
+`unzip awscliv2.zip`<br/>
 `sudo ./aws/install --update`
 
 # Create AWS EKS Clsuter through yaml configuration file
