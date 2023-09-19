@@ -76,13 +76,13 @@ Step 5: Run the following command to display the account id for  your iam user. 
 `aws sts get-caller-identity`
 
 Step 6: Run following command to set environment variable. <br />
-`export ACCOUNT_ID=<Take value from previous command>
+`export ACCOUNT_ID=<Take value from previous command> <br/>
 `export AWS_REGION=<Your IAM user Availability>`
 
 Step 7: Run the following commands one by one to update the file bash_profile and configure aws <br />
-`echo "export ACCOUNT_ID=${ACCOUNT_ID}" | tee -a ~/.bash_profile`
-`echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile`
-`aws configure set default.region ${AWS_REGION}`
+`echo "export ACCOUNT_ID=${ACCOUNT_ID}" | tee -a ~/.bash_profile` <br/>
+`echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile` <br/>
+`aws configure set default.region ${AWS_REGION}` <br/>
 `aws configure get default.region`
 
 # Generate new ssh key for authenticating to Git code from terminal
@@ -101,6 +101,7 @@ Step 3: Installing aws-iam-authenticator otherwise kubectl connection will fial 
 `chmod +x ./aws-iam-authenticator` <br/>
 `mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin` <br/>
 `echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc` <br/>
+
 Step 4: For validate the installation <br />
 `aws-iam-authenticator help`
 
@@ -109,11 +110,11 @@ Step 5: Install AWS V2. Run commands one by one <br />
 `unzip awscliv2.zip` <br/>
 `sudo ./aws/install --update`
 
-Step 6: Create aws eks cluster throuhg infrasturucture as a code yaml file
+Step 6: Create aws eks cluster throuhg infrasturucture as a code yaml file <br/>
 `eksctl create cluster -f cluster.yml`
 
-Step 7: Check if the cluster is healthy
-`kubectl get nodes` <br/>
+Step 7: Check if the cluster is healthy <br/>
+`kubectl get nodes`<br/>
 `kubectl get pods --all-namespaces`
 
 
