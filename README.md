@@ -12,7 +12,9 @@ Step 2: Create python virtual environment name with `airflow_with_aws_eks_venv` 
 Step 3: Active your python virtual environment<br/>
 `source ./airflow_with_aws_eks_venv/bin/activate`
 
+
 ## Now you need to execute each command at step by step process under your active python virtual environment
+ Make sure you create your own Git account and git repository called airflow-eks-config with type private. <br />
 
 # Generate new ssh key for authenticating to Git code from terminal
 Step 1: Run the following command and press enter for all questions to skip and keep default values.<br />
@@ -30,7 +32,7 @@ Step 1: Terminal command to add GITHUB_TOKEN environment variable in cloud9 envi
 `export GITHUB_TOKEN=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`<br/>
 
 # Clone this repository to cloud9 environment throough terminal
-`git clone git@github.com:deacademy/airflow-with-aws-eks.git`
+`git clone git@github.com:deacademy/airflow-eks-config.git`
 
 # Upgrading latest version of pip package (Stay upto data with latest python packages)
 Step 1: Upgrade pip for installing python external package<br/>
@@ -118,7 +120,7 @@ Step 3: Install AWS V2. Run commands one by one <br />
 
 # Create AWS EKS Clsuter through yaml configuration file
 Step 1: Go inside folder called airflow-with-aws-eks <br />
-`cd airflow-with-aws-eks`
+`cd airflow-eks-config`
 
 Step 2: Create aws eks cluster throuhg infrasturucture as a code yaml file <br/>
 `eksctl create cluster -f cluster.yml`
@@ -136,17 +138,17 @@ Step 1: Install Flux library <br/>
 Step 2: Detect changes between Git repo and EKS code container<br/>
 `flux bootstrap github \
   --owner=deacademy \
-  --repository=airflow-with-aws-eks \
+  --repository=airflow-eks-config \
   --branch=main \
   --interval=15s \
   --personal`
 
-# Structure bit structure your git project folder(Make sure you are in  airflow-with-aws-eks folder)
+# Structure bit structure your git project folder(Make sure you are in  airflow-eks-config folder)
 Step 1: Create three different folders called workloads,releases,namespaces in your root folder<br/>
-`mkdir airflow-with-aws-eks/{workloads,releases,namespaces}`<br/>
+`mkdir airflow-eks-config/{workloads,releases,namespaces}`<br/>
 
 Step 2: Create .find file all your folder <br/>
-`find airflow-with-aws-eks/ -type d -exec touch {}/.keep \;`<br/>
+`find airflow-eks-config/ -type d -exec touch {}/.keep \;`<br/>
 
 Step 3: Transfer your code changes to git remote repository.<br/>
 `git add .`<br/>
