@@ -25,10 +25,10 @@ Step 3: Active your python virtual environment<br/>
 5. git stable repo
 6. git username configuration
    
-Step 1: Upgrade pip for installing python external package <br/>
+Step 1: Upgrade pip for installing python external package<br/>
 `pip3 install --upgrade pip`
 
-Step 2: Download and extract the latest release of eksctl tool <br/>
+Step 2: Download and extract the latest release of eksctl tool<br/>
 `curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp`
 
 Step 3: Move the extarcted eksctl package to linux installation folder <br/>
