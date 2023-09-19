@@ -72,7 +72,7 @@ Step 2: Install some dependancy utilities packages <br/>
 Step 3: Remove temporary credentials <br/>
 `rm -vf ${HOME}/.aws/credentials`
 
-Step 4:  Configure aws credentials, you copy/paste your aws access key and secret access key that stored earlier and provide region depends on your iam user created zone that can get right before profile icon at right hand top corner. My case region is 'us-east-1' and other option just click enter to skip. <br />
+Step 4: Make sure your aws managed temporary credentials is turned off. Configure aws credentials, you copy/paste your aws access key and secret access key that stored earlier and provide region depends on your iam user created zone that can get right before profile icon at right hand top corner. My case region is 'us-east-1' and other option just click enter to skip. <br />
 `aws configure`
 
 Step 5: Run the following command to display the account id for  your iam user. <br />
