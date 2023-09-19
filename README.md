@@ -38,7 +38,7 @@ Step 4: Test if eksctl installed sucessfully now. It should display latest versi
 `eksctl version`
 
 Step5: Download the latest version of Kubectl package <br/>
-`curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"`
+`curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.8/bin/linux/amd64/kubectl`
 
 Step 6: provide executable permission to Kubectl package <br/>
 `chmod +x ./kubectl`
