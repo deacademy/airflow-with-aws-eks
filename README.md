@@ -13,7 +13,7 @@ Step 3: Active your python virtual environment
 `source .airflow_with_eks/bin/activate`
 
 ## Now you need to execute each command at step by step process under your active python virtual environment
-Installing following packages- <br/>
+# Installing following packages- <br/>
 1. Upgrading latest version of pip package
 2. eksctl
 3. Kubectl
