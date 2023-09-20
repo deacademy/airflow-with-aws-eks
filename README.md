@@ -18,10 +18,10 @@ Step 3: Active your python virtual environment<br/>
 
 # Generate new ssh key for authenticating to Git code from terminal
 Step 1: Run the following command and press enter for all questions to skip and keep default values.<br />
-`ssh-keygen -t ed25519`
+`ssh-keygen -t rsa`
 
 Step 2: Copy public key content by running the following command need to add in ssh key under your GitHub account.<br/>
-`cat  /home/ec2-user/.ssh/id_ed25519.pub`
+`cat  /home/ec2-user/.ssh/id_rsa.pub`
 
 # Confguring SSH to EC2 instance for acessing it. 
 Step 1: Add the ssh key to EC2 instances. You should able to see key name airflow-with-aws-eks-github-ssh in key pairs list in EC2 service page under Network & Security section.<br />
