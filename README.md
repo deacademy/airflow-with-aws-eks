@@ -186,4 +186,7 @@ Step 1:<br/>
 Step 1: <br/>
 
 
+# GitHUB repository references
+Set up Kuberneets resources (YAML files): https://github.com/apache/airflow<br/>
+EBS csi driver installation: https://github.com/kubernetes-sigs/aws-ebs-csi-driver
 
