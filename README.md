@@ -29,7 +29,7 @@ Step 1: Add the ssh key to EC2 instances. You should able to see key name airflo
 
 # Add GitHUB pernsonal access token to GitHUB repository. Token should be different in your GitHUB account.
 Step 1: Terminal command to add GITHUB_TOKEN environment variable in cloud9 environment<br/>
-`export GITHUB_TOKEN=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`<br/>
+`export GITHUB_TOKEN=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`<br/>
 
 # Clone this repository to cloud9 environment throough terminal
 `git clone git@github.com:deacademy/airflow-eks-config.git`
