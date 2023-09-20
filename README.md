@@ -131,12 +131,13 @@ Step 3: Check if the cluster is healthy<br/>
  Check the cluster health<br/>
 `kubectl get pods --all-namespaces`
 
-# Next run other terminal commands
+# Flux Intallation
 Step 1: Install Flux library <br/>
 `curl -s https://fluxcd.io/install.sh | sudo bash`<br/>
 
+# Synchonize changes between Git and Kubernetes cluster 
 Step 2: Detect changes between Git repo and EKS code container<br/>
-`flux bootstrap github --owner=deacademy --repository=airflow-eks-config --branch=main --personal`<br/>
+`flux bootstrap github --private=true --owner=deacademy --repository=airflow-eks-config --branch=main --personal`<br/>
 
 In case of issue on above command then need to delete flux secret running the below command and  rerun the Stpe 2 again<br/>
 `kubectl delete -n flux-system secret flux-system`<br/>
