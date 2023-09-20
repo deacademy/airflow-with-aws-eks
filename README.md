@@ -140,6 +140,8 @@ Step 2: Detect changes between Git repo and EKS code container<br/>
 `flux bootstrap github --private=true --owner=deacademy --repository=airflow-eks-config --branch=main --personal`<br/>
 
 In case of issue on above command then need to delete flux secret running the below command and  rerun the Stpe 2 again<br/>
+`flux uninstall --keep-namespace`<br/>
+and<br/>
 `kubectl delete -n flux-system secret flux-system`<br/>
 
 Step 3: Check the flux status<br/>
