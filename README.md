@@ -136,18 +136,15 @@ Step 1: Install Flux library <br/>
 `curl -s https://fluxcd.io/install.sh | sudo bash`<br/>
 
 Step 2: Detect changes between Git repo and EKS code container<br/>
-For organization account - <br/>
-`flux bootstrap github --owner=deacademy --repository=airflow-eks-config --branch=main --interval=15s` <br/>
-For personal account - <br/>
-`flux bootstrap github --owner=deacademy --repository=airflow-eks-config --branch=main --interval=15s --personal`
+`flux bootstrap github --owner=deacademy --repository=airflow-eks-config --branch=main --personal`<br/>
   
 
 # Structure bit structure your git project folder(Make sure you are in  airflow-eks-config folder)
 Step 1: Create three different folders called workloads,releases,namespaces in your root folder<br/>
-`mkdir airflow-eks-config/{workloads,releases,namespaces}`<br/>
+`mkdir /home/ec2-user/environment/airflow-eks-config/{workloads,releases,namespaces}`<br/>
 
 Step 2: Create .find file all your folder <br/>
-`find airflow-eks-config/ -type d -exec touch {}/.keep \;`<br/>
+`find /home/ec2-user/environment/airflow-eks-config/ -type d -exec touch {}/.keep \;`<br/>
 
 Step 3: Transfer your code changes to git remote repository.<br/>
 `git add .`<br/>
