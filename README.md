@@ -144,6 +144,8 @@ In case of issue on above command then need to delete flux secret running the be
 
 Step 3: Check the flux status<br/>
 `flux check`<br/>
+and<br/>
+`flux get source git flux-system`
   
 
 # Structure bit structure your git project folder(Make sure you are in  airflow-eks-config folder)
