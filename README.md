@@ -137,6 +137,12 @@ Step 1: Install Flux library <br/>
 
 Step 2: Detect changes between Git repo and EKS code container<br/>
 `flux bootstrap github --owner=deacademy --repository=airflow-eks-config --branch=main --personal`<br/>
+
+In case of issue on above command then need to delete flux secret running the below command and  rerun the Stpe 2 again<br/>
+`kubectl delete -n flux-system secret flux-system`<br/>
+
+Step 3: Check the flux status<br/>
+`flux check`<br/>
   
 
 # Structure bit structure your git project folder(Make sure you are in  airflow-eks-config folder)
@@ -168,12 +174,10 @@ Step 2: Update the aws-ebs-csi-driver Helm repository.<br />
 `helm repo update`<br />
 
 Step 3:  Install the aws-ebs-csi-driver Helm repository.<br />
-`helm upgrade --install aws-ebs-csi-driver \
-    --namespace kube-system \
-    aws-ebs-csi-driver/aws-ebs-csi-driver`<br />
+`helm upgrade --install aws-ebs-csi-driver --namespace kube-system aws-ebs-csi-driver/aws-ebs-csi-driver`<br />
 
 Step 4: Once the driver has been deployed, verify the pods are running.<br />
-`kubectl get pods -n kube-system -l app.kubernetes.io/name=aws-ebs-csi-driver`<br />
+`kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-ebs-csi-driver,app.kubernetes.io/instance=aws-ebs-csi-driver"`<br />
 
 # Setting up Helm repository for accessing airflow Helm chart
 Step 1:<br/>
