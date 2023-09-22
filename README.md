@@ -178,20 +178,37 @@ Step 1: Add the aws-ebs-csi-driver Helm repository.<br />
 Step 2: Update the aws-ebs-csi-driver Helm repository.<br />
 `helm repo update`<br />
 
-Step 3:  Install the aws-ebs-csi-driver Helm repository.<br />
+Step 3:  Install and deploy the aws-ebs-csi-driver Helm repository in kubernetes server <br />
 `helm upgrade --install aws-ebs-csi-driver --namespace kube-system aws-ebs-csi-driver/aws-ebs-csi-driver`<br />
 
 Step 4: Once the driver has been deployed, verify the pods are running.<br />
 `kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-ebs-csi-driver,app.kubernetes.io/instance=aws-ebs-csi-driver"`<br />
 
-# Setting up Helm repository object for accessing airflow Helm chart
-Step 1: Create helm repository object
+# Setting up Helm repository object to deploy apache airflow in kubernetes cluster
+Step 1: Create helm repository object<br/>
+We need add helm airflow repository object file airflow-repo.yml under sources folder. <br/>
 
-# Deploy Airflow with flux
-Step 1: <br/>
+Step 2: Command to see all the resources that flux deploys in kubernetes cluster <br/>
+`flux get all`<br/>
+
+# Deploy airflow with flux
+Step 1: Release airflow helm repository object<br/>
+We need to add helm airflow repository object file airflow-dev.yml under resources folder. So flux will automatically deploy to cluster for you. <br/>
+
+Step 2: Check if helm resource successfully deployed in flux<br/>
+`flux logs --follow --level=error --all-namespaces`<br/>
+
+Step 3: Check airflow running pods in eks cluster under dev namespaces<br/>
+`kubectl get pods -n dev` 
+
+Step 4: Rollback Helm release from eks cluster
+`flux delete helmrelease airflow -n dev`
 
 
 # GitHUB repository references
 Set up Kuberneets resources (YAML files): https://github.com/apache/airflow<br/>
-EBS csi driver installation: https://github.com/kubernetes-sigs/aws-ebs-csi-driver
+EBS csi driver installation: https://github.com/kubernetes-sigs/aws-ebs-csi-driver<br/>
+Helm Chart Official Documentation: https://airflow.apache.org/docs/helm-chart/stable/index.html<br/>
+Dependencies for helm chart with apache airflow(YAML): https://github.com/apache/airflow/blob/main/chart/Chart.yaml<br/>
+
 
