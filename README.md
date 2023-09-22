@@ -218,7 +218,7 @@ Followed by to see Git-Synce in container section<br/>
 
 # See if able to see our dag name parallel_dag.py in airlfow instance
 Step 1: Execute your airflow scheduler container<br/>
-`kubectl exec -it <your scheduler pod name> -n dev -c scheduler  -- /bin/bash `<br/>
+`kubectl exec -it <your scheduler pod name> -n dev -c scheduler  -- /bin/bash`<br/>
 
 Step 2: Now you are inside airflow scheduler dag contianer and run follows to see your dags<br/>
 `airflow dags list`<br/>
@@ -234,6 +234,22 @@ Step2: Convert the provate key file content to base64 encoded and store to temp.
 
 
 
+See the Helm revision history, it will increase next time<br/>
+`helm list --namespace=dev`<br/>
+
+Run the following command to Syncronized git repository with eks clsuter <br/>
+`fluxctl sync --k8s-fwd-ns flux`<br/>
+Next to watch pods run as the next command<br/>
+`watch kubectl get pods -n dev`<br/>
+
+Now see the Helm revision history<br/>
+`helm list --namespace=dev`<br/>
+
+Check if your docker image code available in airflow server<br/>
+`kuebctl exec -it <webserver container name> -n dev -c webserver  -- /bin/bash `
+Next will abale to see your github source codes<br/>
+`ls `<br/>
+`ls dags/`<br/>
 
 # GitHUB repository references
 Set up Kuberneets resources (YAML files): https://github.com/apache/airflow<br/>
