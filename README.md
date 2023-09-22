@@ -199,10 +199,29 @@ Step 2: Check if helm resource successfully deployed in flux<br/>
 `flux logs --follow --level=error --all-namespaces`<br/>
 
 Step 3: Check airflow running pods in eks cluster under dev namespaces<br/>
-`kubectl get pods -n dev` 
+`kubectl get pods -n dev` <br/>
 
 Step 4: Rollback Helm release from eks cluster
-`flux delete helmrelease airflow -n dev`
+`flux delete helmrelease airflow -n dev`<br/>
+
+# Synchronizing Dags with Git-Sync Sidecar without persistance 
+ Step 1: Install Git-Sync Sidecar and configure it<br/>
+ Need to add dags section of code in existing releases/airflow-dev.yml file</br>
+ 
+ Step 2: Check if your helm resource successfully deployed in flux<br/>
+`flux logs --follow --level=error --all-namespaces`<br/>
+
+Step 3: Once you run the bellow command, you will see three pods instead of two <br/>
+`kubectl get pods -n dev`<br/>
+Followed by to see Git-Synce in container section<br/>
+`kubectl describe pod <your scheduler pod name> -n dev`<br/>
+
+# See if able to see our dag name parallel_dag.py in airlfow instance
+Step 1: Execute your airflow scheduler container<br/>
+`kubectl exec -it <your scheduler pod name> -n dev -c scheduler  -- /bin/bash `<br/>
+
+Step 2: Now you are inside airflow scheduler dag contianer and run follows to see your dags<br/>
+`airflow dags list`<br/>
 
 
 # GitHUB repository references
@@ -210,5 +229,6 @@ Set up Kuberneets resources (YAML files): https://github.com/apache/airflow<br/>
 EBS csi driver installation: https://github.com/kubernetes-sigs/aws-ebs-csi-driver<br/>
 Helm Chart Official Documentation: https://airflow.apache.org/docs/helm-chart/stable/index.html<br/>
 Dependencies for helm chart with apache airflow(YAML): https://github.com/apache/airflow/blob/main/chart/Chart.yaml<br/>
+Git-Sync installation documentation: https://airflow.apache.org/docs/helm-chart/stable/manage-dags-files.html#mounting-dags-using-git-sync-sidecar-without-persistence
 
 
