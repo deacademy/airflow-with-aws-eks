@@ -223,12 +223,15 @@ Step 1: Execute your airflow scheduler container<br/>
 Step 2: Now you are inside airflow scheduler dag contianer and run follows to see your dags<br/>
 `airflow dags list`<br/>
 
-## Create public/private key and add to deploy code
+# Create public/private key and add to deploy code
 Create private repo called airflow-dags`<br/>
 
 Step1: `ssh-keygen -t rsa -b 4096`<br/>
-Step2: Convert the provate key file content to base64 encoded and store to temp.txt file
+Step2: Convert the provate key file content to base64 encoded and store to temp.txt file<br />
 `base64 private-git -w 0> temp.txt` <br />
+
+# Building CI/CD Pipeline With Codepipeline and ECR
+
 
 
 
